@@ -257,20 +257,24 @@ ClusterIcon.prototype.show = function () {
         img += "width: " + this.width_ + "px;" + "height: " + this.height_ + "px;";
     }
     img += "'>";
-    this.div_.innerHTML = img + "<div style='" +
-        "position: absolute;" +
-        "top: " + this.anchorText_[0] + "px;" +
-        "left: " + this.anchorText_[1] + "px;" +
-        "color: " + this.textColor_ + ";" +
-        "font-size: " + this.textSize_ + "px;" +
-        "font-family: " + this.fontFamily_ + ";" +
-        "font-weight: " + this.fontWeight_ + ";" +
-        "font-style: " + this.fontStyle_ + ";" +
-        "text-decoration: " + this.textDecoration_ + ";" +
-        "text-align: center;" +
-        "width: " + this.width_ + "px;" +
-        "line-height:" + this.height_ + "px;" +
-        "'>" + (this.cluster_.hideLabel_ ? ' ' : this.sums_.text) + "</div>";
+    this.div_.innerHTML = 
+        // "<div style='" +
+        // "position: absolute;" +
+        // "top: " + this.anchorText_[0] + "px;" +
+        // "left: " + this.anchorText_[1] + "px;" +
+        // "color: " + this.textColor_ + ";" +
+        // "font-size: " + this.textSize_ + "px;" +
+        // "font-family: " + this.fontFamily_ + ";" +
+        // "font-weight: " + this.fontWeight_ + ";" +
+        // "font-style: " + this.fontStyle_ + ";" +
+        // "text-decoration: " + this.textDecoration_ + ";" +
+        // "text-align: center;" +
+        // "width: " + this.width_ + "px;" +
+        // "line-height:" + this.height_ + "px;" +
+        // "'>" + 
+        (this.cluster_.hideLabel_ ? ' ' : this.sums_.text)
+        // + "</div>"
+        ;
     if (typeof this.sums_.title === "undefined" || this.sums_.title === "") {
       this.div_.title = this.cluster_.getMarkerClusterer().getTitle();
     } else {
@@ -292,17 +296,17 @@ ClusterIcon.prototype.useStyle = function (sums) {
   var index = Math.max(0, sums.index - 1);
   index = Math.min(this.styles_.length - 1, index);
   var style = this.styles_[index];
-  this.url_ = style.url;
+  // this.url_ = style.url;
   this.height_ = style.height;
   this.width_ = style.width;
   this.anchorText_ = style.anchorText || [0, 0];
   this.anchorIcon_ = style.anchorIcon || [parseInt(this.height_ / 2, 10), parseInt(this.width_ / 2, 10)];
-  this.textColor_ = style.textColor || "black";
-  this.textSize_ = style.textSize || 11;
-  this.textDecoration_ = style.textDecoration || "none";
-  this.fontWeight_ = style.fontWeight || "bold";
-  this.fontStyle_ = style.fontStyle || "normal";
-  this.fontFamily_ = style.fontFamily || "Arial,sans-serif";
+  // this.textColor_ = style.textColor || "black";
+  // this.textSize_ = style.textSize || 11;
+  // this.textDecoration_ = style.textDecoration || "none";
+  // this.fontWeight_ = style.fontWeight || "bold";
+  // this.fontStyle_ = style.fontStyle || "normal";
+  // this.fontFamily_ = style.fontFamily || "Arial,sans-serif";
   this.backgroundPosition_ = style.backgroundPosition || "0 0";
 };
 
@@ -713,7 +717,7 @@ function MarkerClusterer(map, opt_markers, opt_options) {
     this.batchSize_ = this.batchSizeIE_;
   }
 
-  this.setupStyles_();
+  // this.setupStyles_();
 
   this.addMarkers(opt_markers, true);
   this.setMap(map); // Note: this causes onAdd to be called
