@@ -1211,14 +1211,22 @@ MarkerClusterer.prototype.addMarker = function (marker, opt_nodraw) {
  * @param {boolean} [opt_nodraw] Set to <code>true</code> to prevent redrawing.
  */
 MarkerClusterer.prototype.addMarkers = function (markers, opt_nodraw) {
-	var key;
-	for (key in markers) {
-		if (markers.hasOwnProperty(key)) {
-			this.pushMarkerTo_(markers[key]);
+	if(markers.length){
+		this.markers_.push.apply(this.markers_, markers);
+
+		// var m;
+		// var amount = markers.length;
+		// // for (var i = markers.length - 1; i >= 0; i--) {
+		// for (var i = 0; i < amount; i++) {
+		// 	// if (markers.hasOwnProperty(key)) {
+		// 		// this.pushMarkerTo_(markers[key]);
+		// 		this.markers_.push(markers[i]);
+		// 	// }
+		// }
+
+		if (!opt_nodraw) {
+			this.redraw_();
 		}
-	}
-	if (!opt_nodraw) {
-		this.redraw_();
 	}
 };
 
